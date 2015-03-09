@@ -12,7 +12,7 @@ from argparse import ArgumentParser
 # Configure logging
 logging.basicConfig(level=logging.DEBUG, format='%(name)s [%(levelname)s]: %(message)s')
 logger = logging.getLogger("The Art & Science of Whatever::Image Glitch")
-glitch_num = 0
+
 
 class Glitch(object):
 
@@ -24,6 +24,7 @@ class Glitch(object):
         return start_point, end_point
 
     def splice_a_chunk_in_a_file(self, file_datam, glitch_num):
+        print glitch_num
         """ Splice a chunk in a file.
 
         * Picks out a random chunk of the file, duplicates it several times, and then inserts that
@@ -54,7 +55,9 @@ class Glitch(object):
         search_num = tumblr.top_hit_num
         # divide by 5,000,000 to normalize the range from [0,5000000] to [0,1]
         # multiply by 5 to increase the range from [0,5]
-        glitch_num = ((search_num / 5000000) * 5)
+        glitch_num = (int)((search_num / float(5000000)) * 5.0)
+        #print search_num / 5000000
+        print glitch_num
 
         #Image pre-processing via PIL # TODO
         #local_image = self.additional_image_processing(local_image)
