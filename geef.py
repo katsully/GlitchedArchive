@@ -1,12 +1,16 @@
 import glitch
 import subprocess
 import tumblr
+import datetime
 
 def make_gif(filename, paths, duration=10):
 	subprocess.call(['convert', '-delay', '20', '-loop', '0'] + paths + [filename])
 
 def get_caption(titles):
-	caption = ""
+	# Have the beginning of the captions start with the day's date
+	date = datetime.datetime.now()
+    date_string = date.strftime("%m-%d-%Y")
+	caption = date_string + '\n'
 	for title in titles:
 		caption += title + '\n'
 	return caption
